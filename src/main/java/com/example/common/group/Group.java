@@ -1,10 +1,10 @@
-package com.example.common;
+package com.example.common.group;
 
+import com.example.common.BaseTime;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "groups")

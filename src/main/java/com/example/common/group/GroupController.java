@@ -1,4 +1,4 @@
-package com.example.common;
+package com.example.common.group;
 
 
 import com.example.common.exception.Common400Exception;

@@ -1,4 +1,4 @@
-package com.example.common;
+package com.example.common.group;
 
 public interface GroupConst {
     String NotFound = "해당 그룹를 찾을 수 없습니다.";

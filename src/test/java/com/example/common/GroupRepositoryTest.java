@@ -1,5 +1,8 @@
 package com.example.common;
 
+import com.example.common.group.Group;
+import com.example.common.group.GroupRepository;
+import com.example.common.group.GroupStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

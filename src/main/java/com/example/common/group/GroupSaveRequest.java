@@ -1,4 +1,4 @@
-package com.example.common;
+package com.example.common.group;
 
 import lombok.*;
 
@@ -9,9 +9,13 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class GroupUpdateRequest {
+public class GroupSaveRequest {
 
     @NotBlank(message = GroupConst.BlankNameMsg)
     private String name;
+
+    public Group toEntity (){
+        return new Group(null, name, GroupStatus.ACTIVE);
+    }
 
 }
