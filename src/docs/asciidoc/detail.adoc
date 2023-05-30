@@ -32,6 +32,9 @@ include::{snippets}/group-detail/response-body.adoc[]
 ==== 응답 [response fields]
 include::{snippets}/group-detail/response-fields.adoc[]
 
+==== 응답 [link]
+include::{snippets}/group-detail/links.adoc[]
+
 ==== curl-request
 include::{snippets}/group-detail/curl-request.adoc[]
 

@@ -1,12 +1,15 @@
-package com.example.common;
+package com.example.common.group;
 
-import com.example.common.group.GroupSaveRequest;
-import com.example.common.group.GroupUpdateRequest;
+import com.example.common.AbstractRestControllerTest;
+import com.example.common.group.modules.group.model.request.GroupSaveRequest;
+import com.example.common.group.modules.group.model.request.GroupUpdateRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.FieldDescriptor;
 import org.springframework.restdocs.payload.JsonFieldType;
 
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
@@ -20,15 +23,23 @@ public class GroupIntegratedTest extends AbstractRestControllerTest {
                 get("/group?page=1&size=1"))
         .andDo(
                 document("group-list",
+                        links(
+                            linkWithRel("first").description("나의 현재 페이지"),
+                            linkWithRel("prev").description("나의 현재 페이지"),
+                            linkWithRel("self").description("나의 현재 페이지"),
+                            linkWithRel("next").description("나의 현재 페이지"),
+                            linkWithRel("last").description("나의 현재 페이지")
+                        ),
                         requestParameters(
                             parameterWithName("page").description("현재 페이지"),
                             parameterWithName("size").description("리스트 사이즈")
                         ),
                         responseFields(
-                                subsectionWithPath("content").description("그룹 이름").type(JsonFieldType.ARRAY)
+                                subsectionWithPath("_embedded.groups").description("그룹 이름").type(JsonFieldType.ARRAY)
                         )
-                        .and(getGroupResponse("content[]."))
+                        .and(getGroupResponse("_embedded.groups[]."))
                         .and(getPageableResponse())
+                        .and(getPageLinkResponse())
                 )
         );
     }
@@ -40,12 +51,13 @@ public class GroupIntegratedTest extends AbstractRestControllerTest {
 
                 .andDo(
                         document("group-detail",
+                                links(getSelfLink()),
                                 pathParameters(
                                     parameterWithName("id").description("그룹의 고유값")
                                 ),
                                 responseFields(
-                                        getGroupResponse("")
-                                )
+                                    getGroupResponse("")
+                                ).and(getSelfLinkResponse())
                         )
 
                 );
@@ -76,12 +88,14 @@ public class GroupIntegratedTest extends AbstractRestControllerTest {
                 )
                 .andDo(
                         document("group-save"
+
+                                ,links(getSelfLink())
                                 , requestFields(
                                     getGroupRequest()
                                 )
                                 , responseFields (
                                         getGroupResponse("")
-                                )
+                                ).and(getSelfLinkResponse())
                         )
 
                 );
@@ -117,6 +131,7 @@ public class GroupIntegratedTest extends AbstractRestControllerTest {
                 )
                 .andDo(
                         document("group-update"
+                                ,links(getSelfLink())
                                 , pathParameters(
                                         parameterWithName("id").description("그룹의 고유값")
                                 )
@@ -125,7 +140,7 @@ public class GroupIntegratedTest extends AbstractRestControllerTest {
                                 )
                                 , responseFields (
                                         getGroupResponse("")
-                                )
+                                ).and(getSelfLinkResponse())
                         )
 
                 );
@@ -189,11 +204,8 @@ public class GroupIntegratedTest extends AbstractRestControllerTest {
 
     private FieldDescriptor[] getGroupResponse(String prefix){
         return new FieldDescriptor[] {
-                fieldWithPath(prefix + "id").description("그룹 고유번호").type(JsonFieldType.NUMBER),
-                fieldWithPath(prefix + "name").description("그룹 이름").type(JsonFieldType.STRING),
-                fieldWithPath(prefix + "status").description("상태코드[xxx, xxx, xxx]").type(JsonFieldType.STRING),
-                fieldWithPath(prefix + "modifiedDate").description("수정날짜").type(JsonFieldType.STRING).optional(),
-                fieldWithPath(prefix + "createdDate").description("저장날짜").type(JsonFieldType.STRING).optional()
+                fieldWithPath(prefix + "index").description("그룹 고유번호").type(JsonFieldType.NUMBER),
+                fieldWithPath(prefix + "groupName").description("그룹 이름").type(JsonFieldType.STRING),
         };
     }
 

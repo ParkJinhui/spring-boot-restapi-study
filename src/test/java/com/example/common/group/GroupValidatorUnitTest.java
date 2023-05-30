@@ -1,8 +1,8 @@
-package com.example.common;
+package com.example.common.group;
 
-import com.example.common.group.GroupConst;
-import com.example.common.group.GroupSaveRequest;
-import com.example.common.group.GroupUpdateRequest;
+import com.example.common.group.modules.group.GroupConst;
+import com.example.common.group.modules.group.model.request.GroupSaveRequest;
+import com.example.common.group.modules.group.model.request.GroupUpdateRequest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;

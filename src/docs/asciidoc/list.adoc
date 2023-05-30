@@ -29,6 +29,9 @@ include::{snippets}/group-list/response-body.adoc[]
 === 응답 [response fields]
 include::{snippets}/group-list/response-fields.adoc[]
 
+==== 응답 [link]
+include::{snippets}/group-list/links.adoc[]
+
 === curl-request
 include::{snippets}/group-list/curl-request.adoc[]
 

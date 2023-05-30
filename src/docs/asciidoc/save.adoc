@@ -34,8 +34,12 @@ include::{snippets}/group-save/response-body.adoc[]
 ==== 응답 [response fields]
 include::{snippets}/group-save/response-fields.adoc[]
 
+==== 응답 [link]
+include::{snippets}/group-save/links.adoc[]
+
 ==== curl-request
 include::{snippets}/group-save/curl-request.adoc[]
+
 
 === 실패
 1. 그룹 이름 값이 없을 경우

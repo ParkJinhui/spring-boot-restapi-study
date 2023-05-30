@@ -1,6 +1,11 @@
-package com.example.common.group;
+package com.example.common.group.modules.group.service;
 
 
+import com.example.common.group.modules.group.enums.GroupStatus;
+import com.example.common.group.modules.group.entity.Group;
+import com.example.common.group.modules.group.model.request.GroupSaveRequest;
+import com.example.common.group.modules.group.model.request.GroupUpdateRequest;
+import com.example.common.group.modules.group.repository.GroupRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

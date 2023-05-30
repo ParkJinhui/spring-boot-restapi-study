@@ -1,4 +1,4 @@
-package com.example.common.group;
+package com.example.common.group.modules.group.enums;
 
 public enum GroupStatus {
     ACTIVE, DELETE, DISABLE

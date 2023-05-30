@@ -6,3 +6,8 @@ spring:
       mode: always
   jpa:
     defer-datasource-initialization: true
+
+server:
+  servlet:
+    encoding:
+      force-response: true

@@ -1,6 +1,7 @@
-package com.example.common.group;
+package com.example.common.group.modules.group.entity;
 
 import com.example.common.BaseTime;
+import com.example.common.group.modules.group.enums.GroupStatus;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 

@@ -1,7 +1,13 @@
-package com.example.common;
+package com.example.common.group;
 
 
-import com.example.common.group.*;
+import com.example.common.group.modules.group.GroupConst;
+import com.example.common.group.modules.group.controller.GroupController;
+import com.example.common.group.modules.group.entity.Group;
+import com.example.common.group.modules.group.enums.GroupStatus;
+import com.example.common.group.modules.group.model.request.GroupSaveRequest;
+import com.example.common.group.modules.group.model.request.GroupUpdateRequest;
+import com.example.common.group.modules.group.service.GroupService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -62,12 +68,18 @@ public class GroupMockTest {
         mockMvc.perform(
             get("/group")
                     .param("page", "0")
-                    .param("size", "10"))
+                    .param("size", "10")
+                    .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.content[0].id").value(group.getId()))
-                .andExpect(jsonPath("$.content[0].name").value(group.getName()))
-                .andExpect(jsonPath("$.content[0].status").value(group.getStatus().name()))
+                .andExpect(jsonPath("$._embedded.groups[0].index").value(group.getId()))
+                .andExpect(jsonPath("$._embedded.groups[0].groupName").value(group.getName()))
+                .andExpect(jsonPath("$._embedded.groups[0]._links.self.href").exists())
+                .andExpect(jsonPath("$._links.self.href").exists())
+                .andExpect(jsonPath("$.page.size").exists())
+                .andExpect(jsonPath("$.page.totalElements").exists())
+                .andExpect(jsonPath("$.page.totalPages").exists())
+                .andExpect(jsonPath("$.page.number").exists())
         ;
     }
 
@@ -98,9 +110,9 @@ public class GroupMockTest {
                 )
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(group.getId()))
-                .andExpect(jsonPath("$.name").value(group.getName()))
-                .andExpect(jsonPath("$.status").value(group.getStatus().name()))
+                .andExpect(jsonPath("$.index").value(group.getId()))
+                .andExpect(jsonPath("$.groupName").value(group.getName()))
+                .andExpect(jsonPath("$._links.self.href").exists())
         ;
     }
 
@@ -137,9 +149,9 @@ public class GroupMockTest {
                 )
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(group.getId()))
-                .andExpect(jsonPath("$.name").value(group.getName()))
-                .andExpect(jsonPath("$.status").value(group.getStatus().name()));
+                .andExpect(jsonPath("$.index").value(group.getId()))
+                .andExpect(jsonPath("$.groupName").value(group.getName()))
+                .andExpect(jsonPath("$._links.self.href").exists());
     }
 
 
@@ -192,9 +204,9 @@ public class GroupMockTest {
                 )
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(group.getId()))
-                .andExpect(jsonPath("$.name").value(group.getName()))
-                .andExpect(jsonPath("$.status").value(group.getStatus().name()));
+                .andExpect(jsonPath("$.index").value(group.getId()))
+                .andExpect(jsonPath("$.groupName").value(group.getName()))
+                .andExpect(jsonPath("$._links.self.href").exists());
     }
 
 

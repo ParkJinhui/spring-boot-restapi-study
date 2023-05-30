@@ -1,8 +1,8 @@
-package com.example.common;
+package com.example.common.group;
 
-import com.example.common.group.Group;
-import com.example.common.group.GroupRepository;
-import com.example.common.group.GroupStatus;
+import com.example.common.group.modules.group.entity.Group;
+import com.example.common.group.modules.group.repository.GroupRepository;
+import com.example.common.group.modules.group.enums.GroupStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

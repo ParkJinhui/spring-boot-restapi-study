@@ -1,5 +1,8 @@
-package com.example.common.group;
+package com.example.common.group.modules.group.model.request;
 
+import com.example.common.group.modules.group.GroupConst;
+import com.example.common.group.modules.group.enums.GroupStatus;
+import com.example.common.group.modules.group.entity.Group;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
