@@ -1,0 +1,42 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 3
+:sectlinks:
+:operation-http-request-title: Example Request
+:operation-http-response-title: Example Response
+
+= 문서 확인
+
+== group delete api
+
+=== 요청 정보 [http]
+include::{snippets}/group-delete/http-request.adoc[]
+
+=== 요청 정보 [path parameters]
+include::{snippets}/group-delete/path-parameters.adoc[]
+
+
+=== 성공
+
+==== 응답 정보 [http]
+include::{snippets}/group-delete/http-response.adoc[]
+
+==== 응답 [response body]
+include::{snippets}/group-delete/response-body.adoc[]
+
+==== curl-request
+include::{snippets}/group-delete/curl-request.adoc[]
+
+=== 실패
+1. 그룹 고유 번호를 조회했을시 데이터가 없을 경우 실패
+
+==== 응답 [response body]
+include::{snippets}/group-delete-fail/response-body.adoc[]
+
+==== 응답 [response fields]
+include::{snippets}/group-delete-fail/response-fields.adoc[]

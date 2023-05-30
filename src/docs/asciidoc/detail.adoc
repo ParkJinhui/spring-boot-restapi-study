@@ -1,0 +1,46 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 3
+:sectlinks:
+:operation-http-request-title: Example Request
+:operation-http-response-title: Example Response
+
+= 문서 확인
+
+== group detail api
+
+=== 요청 정보 [http]
+include::{snippets}/group-detail/http-request.adoc[]
+
+=== 요청 정보 [path Parameter]
+include::{snippets}/group-detail/path-parameters.adoc[]
+
+
+=== 성공
+
+==== 응답 정보 [http]
+include::{snippets}/group-detail/http-response.adoc[]
+
+==== 응답 [response body]
+include::{snippets}/group-detail/response-body.adoc[]
+
+==== 응답 [response fields]
+include::{snippets}/group-detail/response-fields.adoc[]
+
+==== curl-request
+include::{snippets}/group-detail/curl-request.adoc[]
+
+=== 실패
+1. 그룹 고유 번호를 조회했을시 데이터가 없을 경우 실패
+
+==== 응답 [response body]
+include::{snippets}/group-detail-fail/response-body.adoc[]
+
+==== 응답 [response fields]
+include::{snippets}/group-detail-fail/response-fields.adoc[]
+
