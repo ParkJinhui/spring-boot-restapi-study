@@ -18,3 +18,5 @@ endif::[]
 * link:save.html[그룹 저장]
 * link:update.html[그룹 수정]
 * link:delete.html[그룹 삭제]
+
+// localhost:8080/docs/group/index.html
